@@ -3,6 +3,8 @@
 #include <math.h>
 #include <GL/glut.h>
 
+//Bem vindo 
+
 typedef struct {
     float x;
     float y;
@@ -24,7 +26,7 @@ typedef struct {
 #define MONSTER_RADIUS 0.02f
 #define NUM_MONSTERS 6
 #define NUM_POINTS 80
-#define SURVIVAL_TIME 30 // Tempo de sobrevivência em segundos
+#define SURVIVAL_TIME 30 // Tempo de sobrevivï¿½ncia em segundos
 
 Point points[NUM_POINTS];
 Player player;
@@ -41,7 +43,7 @@ int moveDown = 0;
 int moveLeft = 0;
 int moveRight = 0;
 
-// Funções do jogo
+// Funï¿½ï¿½es do jogo
 int checkCollisionWithPoints(float newX, float newY);
 int checkCollisionWithMonsters();
 void moveMonsters(int value);
@@ -64,7 +66,7 @@ int checkCollisionWithPoints(float newX, float newY) {
         float dx = newX - points[i].x;
         float dy = newY - points[i].y;
         float distance = sqrt(dx * dx + dy * dy);
-        if (distance < PLAYER_RADIUS + POINT_RADIUS) { // Ajuste de colisão
+        if (distance < PLAYER_RADIUS + POINT_RADIUS) { // Ajuste de colisï¿½o
             return 1;
         }
     }
@@ -109,7 +111,7 @@ void moveMonsters(int value) {
 
 void updateSurvivalTimer(int value) {
     if (!showMenu && player.alive) {
-        survivalTimer += 0.1f; // Incrementa o tempo de sobrevivência
+        survivalTimer += 0.1f; // Incrementa o tempo de sobrevivï¿½ncia
         if ((int)survivalTimer % 15 == 0 && (int)survivalTimer > 0) {
             monsterSpeed += 0.005f; // Aumenta a velocidade dos monstros de forma gradual a cada 30 segundos
         }
@@ -145,7 +147,7 @@ void keyboard(unsigned char key, int x, int y) {
 
 
 void keyboardUp(unsigned char key, int x, int y) {
-    // Desativa a direção quando a tecla é liberada
+    // Desativa a direï¿½ï¿½o quando a tecla ï¿½ liberada
     switch (key) {
         case 'w': moveUp = 0; break;
         case 's': moveDown = 0; break;
@@ -262,16 +264,16 @@ void initMonsters() {
             monsters[i].x = (rand() % 20 - 10) / 10.0f; // Gera monstros aleatoriamente
             monsters[i].y = (rand() % 20 - 10) / 10.0f;
 
-            validPosition = 1; // Assume que a posição é válida
+            validPosition = 1; // Assume que a posiï¿½ï¿½o ï¿½ vï¿½lida
 
-            // Verifica se a posição gerada colide com algum ponto (bola verde)
+            // Verifica se a posiï¿½ï¿½o gerada colide com algum ponto (bola verde)
             for (int j = 0; j < numPoints; j++) {
                 float dx = monsters[i].x - points[j].x;
                 float dy = monsters[i].y - points[j].y;
                 float distance = sqrt(dx * dx + dy * dy);
 
                 if (distance < MONSTER_RADIUS + POINT_RADIUS) {
-                    validPosition = 0; // Colidiu, então a posição não é válida
+                    validPosition = 0; // Colidiu, entï¿½o a posiï¿½ï¿½o nï¿½o ï¿½ vï¿½lida
                     break;
                 }
             }
